@@ -14,3 +14,7 @@ pnpm-debug.log*
 .vercel/
 coverage/
 
+# never commit local TLS keys/certs
+**/*.pem
+client/certificates/
+
