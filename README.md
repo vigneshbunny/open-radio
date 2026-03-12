@@ -225,6 +225,20 @@ Notes:
 
 - For best NAT traversal, browsers use public STUN by default. For tougher networks, add a TURN server and set `NEXT_PUBLIC_TURN_URL`, `NEXT_PUBLIC_TURN_USERNAME`, `NEXT_PUBLIC_TURN_PASSWORD`.
 
+### Railway (monorepo notes)
+
+This repository is a monorepo. On Railway, deploy the signaling service with:
+
+- **Root directory**: `signaling`
+- **Builder**: Nixpacks
+- **Env**: `ALLOW_ORIGINS=*`
+
+If Railway logs show `npm: not found`, set a service variable:
+
+- `NIXPACKS_CONFIG_FILE=nixpacks.toml`
+
+(`signaling/nixpacks.toml` forces Node.js + npm in the build image.)
+
 ---
 
 ## Security & privacy model
