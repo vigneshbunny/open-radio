@@ -50,8 +50,10 @@ export class RadioRoom {
 
   async start(localStream: MediaStream) {
     this.localStream = localStream;
+    // For now, run without E2EE at the media layer to guarantee clean, low-glitch audio.
+    // We still compute the room key for presence encryption, but we don't wrap the Opus frames.
     this.e2eeSupported = supportsInsertableStreams();
-    this.e2eeEnabled = this.e2eeSupported; // required by project; fallback handled below.
+    this.e2eeEnabled = false;
     this.cfg.onE2EEStatus({ supported: this.e2eeSupported, enabled: this.e2eeEnabled });
 
     await this.connectWs();
