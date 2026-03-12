@@ -1,0 +1,16 @@
+{
+  "name": "open-radio-signaling",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open Radio stateless WebSocket signaling/bootstrapping node",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.3"
+  }
+}
+

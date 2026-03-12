@@ -1,0 +1,33 @@
+services:
+  signaling:
+    build:
+      context: ./signaling
+    environment:
+      - PORT=8787
+      - ALLOW_ORIGINS=*
+    ports:
+      - "8787:8787"
+
+  client:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - signaling
+
+  proxy:
+    build:
+      context: ./reverse-proxy
+    environment:
+      # Set this to the LAN IP of the machine running Docker.
+      - TLS_IP=192.168.1.42
+      - TLS_HOST=open-radio.local
+      - UPSTREAM_HOST=client
+      - UPSTREAM_PORT=3000
+      - LISTEN_PORT=8443
+    ports:
+      - "8443:8443"
+    depends_on:
+      - client
+
