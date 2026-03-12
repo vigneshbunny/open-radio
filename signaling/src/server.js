@@ -44,6 +44,11 @@ function broadcast(roomHash, msg, exceptPeerId = null) {
 }
 
 const server = http.createServer((req, res) => {
+  if (req.url === '/' || req.url === '') {
+    res.writeHead(200, { 'content-type': 'text/plain' });
+    res.end('open-radio signaling: ok');
+    return;
+  }
   // Minimal health endpoint for platforms.
   if (req.url === '/healthz') {
     res.writeHead(200, { 'content-type': 'text/plain' });
@@ -140,7 +145,7 @@ wss.on('connection', (ws, req) => {
   });
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   // eslint-disable-next-line no-console
   console.log(`[open-radio signaling] listening on :${PORT}`);
 });
