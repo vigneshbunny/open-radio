@@ -33,7 +33,6 @@ export default function HomePage() {
   const [err, setErr] = useState<string>('');
   const [peers, setPeers] = useState<Map<string, PeerState>>(new Map());
   const [isTalking, setIsTalking] = useState(false);
-  const [e2eeOn, setE2eeOn] = useState(false);
   // Avoid hydration mismatch: generate peerId only after mount.
   const [peerId, setPeerId] = useState('');
   const [e2ee, setE2ee] = useState<{ supported: boolean; enabled: boolean }>({
@@ -180,7 +179,7 @@ export default function HomePage() {
         roomHash: rh,
         peerId,
         roomKey: rk,
-        initialE2EEEnabled: e2eeOn,
+        initialE2EEEnabled: false,
         iceServers: defaultIceServers(),
         onPeersChanged: setPeers,
         onError: setErr,
@@ -223,7 +222,7 @@ export default function HomePage() {
       roomHash: rh,
       peerId: next,
       roomKey: rk,
-      initialE2EEEnabled: e2eeOn,
+      initialE2EEEnabled: false,
       iceServers: defaultIceServers(),
       onPeersChanged: setPeers,
       onError: setErr,
@@ -314,19 +313,9 @@ export default function HomePage() {
                   <div className="v">{listenerCount}</div>
                   <div className="k">E2EE</div>
                   <div className="v">
-                    <label className="small" style={{ display: 'inline-flex', gap: 6 }}>
-                      <input
-                        type="checkbox"
-                        checked={e2eeOn}
-                        onChange={(e) => setE2eeOn(e.target.checked)}
-                      />
-                      <span>
-                        Enable media E2EE{' '}
-                        <span className="muted">
-                          ({e2ee.supported ? 'supported' : 'not supported in this browser'})
-                        </span>
-                      </span>
-                    </label>
+                    <span className="small muted">
+                      Media E2EE in development (currently disabled)
+                    </span>
                   </div>
                   <div className="k">Your ID</div>
                   <div className="v">
