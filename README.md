@@ -2,6 +2,7 @@
 
 Open Radio is an **open-source, privacy-focused, anonymous, decentralized-ish** global “digital walkie‑talkie” network.
 
+Running live: https://open-radio-two.vercel.app/
 - **No accounts**: clients generate ephemeral IDs (rotated periodically)
 - **Rooms = frequencies**: join by shared secret string (e.g. `darkforest-773`)
 - **Real-time voice**: low-latency WebRTC audio with push‑to‑talk
