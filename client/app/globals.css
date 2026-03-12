@@ -35,7 +35,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 28px 16px;
+  padding: 24px 16px;
 }
 
 .card {
@@ -227,5 +227,60 @@ button:disabled {
   font-size: 13px;
   margin-top: 10px;
   white-space: pre-wrap;
+}
+
+/* Mobile tweaks */
+@media (max-width: 720px) {
+  .page {
+    padding: 16px 10px;
+    align-items: flex-start;
+  }
+
+  .card {
+    padding: 16px 14px;
+    border-radius: 14px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .brand h1 {
+    font-size: 18px;
+  }
+
+  .brand p {
+    font-size: 12px;
+  }
+
+  .pill {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .grid {
+    gap: 10px;
+  }
+
+  .panel {
+    padding: 12px;
+  }
+
+  .kv {
+    grid-template-columns: 120px 1fr;
+    font-size: 12px;
+  }
+
+  .talk {
+    font-size: 15px;
+    padding: 14px 12px;
+  }
+
+  .peer {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 }
 
